@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Lua4Net.Lua">
+    <Position X="3.75" Y="9.5" Width="3.25" />
+    <AssociationLine Name="registeredManagedObjects" Type="Lua4Net.LuaManagedObject" FixedFromPoint="true">
+      <Path>
+        <Point X="7" Y="11.125" />
+        <Point X="8.75" Y="11.125" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAYAAAAABDCAAAQhIAgAAAAAyAIAgAAACEwAAMQBAAA=</HashCode>
+      <FileName>Lua.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Global" />
+      <Property Name="Stack" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="managedGlobalFunctions" />
+      <Field Name="registeredManagedObjects" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Lua4Net.Types.LuaBoolean">
+    <Position X="8.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAIAAAAAgAAAAAAA=</HashCode>
+      <FileName>Types\LuaBoolean.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Lua4Net.Types.LuaNilValue">
+    <Position X="10.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\LuaNilValue.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Lua4Net.Types.LuaNumber">
+    <Position X="14" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAIAAAAAgAAAAAAA=</HashCode>
+      <FileName>Types\LuaNumber.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Lua4Net.Types.LuaString">
+    <Position X="12.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAIAAAAAgAAAAAAA=</HashCode>
+      <FileName>Types\LuaString.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Lua4Net.Types.LuaTable">
+    <Position X="4.25" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAABAAAAAiABAAAAQCAAAAgAAAAAAQ=</HashCode>
+      <FileName>Types\LuaTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.Types.LuaFunction">
+    <Position X="6.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\LuaFunction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.LuaVirtualStack">
+    <Position X="0.5" Y="8" Width="2.5" />
+    <NestedTypes>
+      <Class Name="Lua4Net.LuaVirtualStack.CountChecker" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>LuaVirtualStack.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gAAAQABAAAAAEAAAAAQAwAQAAACIAAEAAAAEAAEAAQA=</HashCode>
+      <FileName>LuaVirtualStack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.LuaGlobalTable" Collapsed="true">
+    <Position X="4.5" Y="8" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LuaGlobalTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.Types.LuaValueType" Collapsed="true">
+    <Position X="11.25" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\LuaValueType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.Types.LuaType">
+    <Position X="8" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\LuaType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.LuaException" Collapsed="true">
+    <Position X="20.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LuaException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.LuaSyntaxErrorException" Collapsed="true">
+    <Position X="17.25" Y="4" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>LuaSyntaxErrorException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.LuaRuntimeErrorException" Collapsed="true">
+    <Position X="17.25" Y="4.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>LuaRuntimeErrorException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.LuaErrorOutsideProtectedEnvironmentException" Collapsed="true">
+    <Position X="17.25" Y="3.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LuaErrorOutsideProtectedEnvironmentException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.LuaTypeMissingReferenceException" Collapsed="true">
+    <Position X="17.25" Y="5.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LuaTypeMissingReferenceException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.LuaManagedObject">
+    <Position X="8.75" Y="8" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEECAAAAAEAAAAAAoACAgEAAAAAAQAAAAACIAAA=</HashCode>
+      <FileName>LuaManagedObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.LuaManagedFunction">
+    <Position X="0.5" Y="12.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAwAAAAAAAAAAAAAAAAIAAAAgAAABAAQ=</HashCode>
+      <FileName>LuaManagedFunction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.LuaManagedFunctionException" Collapsed="true">
+    <Position X="17.25" Y="6.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LuaManagedFunctionException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.Types.LuaTablePath">
+    <Position X="2" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAIAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Types\LuaTablePath.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.Types.LuaTypeWithStackReference" Collapsed="true">
+    <Position X="5.25" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAgACAAAA=</HashCode>
+      <FileName>Types\LuaTypeWithStackReference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.LuaManagedObjectTable&lt;TSubTable&gt;">
+    <Position X="8.75" Y="12" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAwAEAgAEAAGAIAAgAIAABBgQAgAAAIBAAAADACAA=</HashCode>
+      <FileName>LuaManagedObjectTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lua4Net.LuaDebugContext">
+    <Position X="4.25" Y="15.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAABBAA=</HashCode>
+      <FileName>LuaDebugContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Lua4Net.LuaStandardLibrary">
+    <Position X="6.75" Y="8" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAQAAAAQAA=</HashCode>
+      <FileName>LuaStandardLibrary.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Lua4Net.LuaHookType">
+    <Position X="2.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAEAAAA=</HashCode>
+      <FileName>LuaHookType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="Lua4Net.LuaManagedFunctionHandler" Collapsed="true">
+    <Position X="0.5" Y="12" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LuaManagedFunctionHandler.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
