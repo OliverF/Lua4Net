@@ -78,6 +78,7 @@
     <Compile Include="Types\LuaValueType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="Lua4Net.cd" />
   </ItemGroup>
   <ItemGroup>
