@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lua4Net", "Lua4Net.csproj", "{86719C9C-6283-49BA-9D90-302B7CF9BFD6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lua4Net", "Lua4Net/Lua4Net.csproj", "{86719C9C-6283-49BA-9D90-302B7CF9BFD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
