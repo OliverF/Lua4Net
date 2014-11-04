@@ -41,6 +41,7 @@
         public Lua()
         {
             this.LuaState = NativeMethods.LuaL_newstate();
+            NativeMethods.luaL_openlibs(LuaState);
             Trace.Assert(this.LuaState != IntPtr.Zero, "this.LuaState != IntPtr.Zero");
 
             // the following line is really, really important, because if we wouldn't keep a reference to the delegate object here,

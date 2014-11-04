@@ -318,6 +318,9 @@
         [DllImport(LuaDllName, EntryPoint = "luaopen_math", CallingConvention = DllCallingConv)]
         internal static extern int Luaopen_math(IntPtr luaState);
 
+        [DllImport(LuaDllName, EntryPoint = "luaL_openlibs", CallingConvention = DllCallingConv)]
+        internal static extern int luaL_openlibs(IntPtr luaState);
+
         #endregion
     }
 }
