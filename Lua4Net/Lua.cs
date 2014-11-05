@@ -384,14 +384,15 @@
             }
             else
             {
+                string chunkName = match.Groups[1].Value;
                 var line = int.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture);
 
                 if (runtimeException)
                 {
-                    return new LuaRuntimeErrorException(line, match.Groups[3].Value);
+                    return new LuaRuntimeErrorException(chunkName, line, match.Groups[3].Value);
                 }
 
-                return new LuaSyntaxErrorException(line, match.Groups[3].Value);
+                return new LuaSyntaxErrorException(chunkName, line, match.Groups[3].Value);
             }
         }
 

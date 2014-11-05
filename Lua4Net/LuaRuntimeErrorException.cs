@@ -24,18 +24,21 @@
             this.Line = -1;
         }
 
-        public LuaRuntimeErrorException(int line, string message)
+        public LuaRuntimeErrorException(string chunkName, int line, string message)
             : base(message)
         {
+            this.ChunkName = chunkName;
             this.Line = line;
         }
 
         protected LuaRuntimeErrorException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
+            this.ChunkName = info.GetString("ChunkName");
             this.Line = info.GetInt32("Line");
         }
 
+        public string ChunkName { get; private set; }
         public int Line { get; private set; }
 
         [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)]
@@ -43,6 +46,7 @@
         {
             base.GetObjectData(info, context);
 
+            info.AddValue("ChunkName", this.ChunkName);
             info.AddValue("Line", this.Line);
         }
     }
