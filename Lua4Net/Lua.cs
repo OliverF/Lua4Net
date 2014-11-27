@@ -370,7 +370,7 @@
 
         private static LuaException ParseErrorMessageForSourceCodeLineAndCreateException(string errorMessage, bool runtimeException)
         {
-            var regex = new Regex("(.*):(\\d+):\\s(.*)");
+            var regex = new Regex("\\[string \"(.*)\"\\]:(\\d+):\\s(.*)");
             var match = regex.Match(errorMessage);
 
             if (!match.Success)
