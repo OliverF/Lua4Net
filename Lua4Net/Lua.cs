@@ -10,6 +10,29 @@
     using Lua4Net.Native;
     using Lua4Net.Types;
 
+    internal struct LuaErrorMessageParseResult
+    {
+        public string ChunkName { get; private set; }
+        public int Line { get; private set; }
+        public string Message { get; private set; }
+
+        public LuaErrorMessageParseResult(string message) 
+            : this()
+        {
+            this.ChunkName = "";
+            this.Line = -1;
+            this.Message = message;
+        }
+
+        public LuaErrorMessageParseResult(string chunkName, int line, string message)
+            : this()
+        {
+            this.ChunkName = chunkName;
+            this.Line = line;
+            this.Message = message;
+        }
+    }
+
     /// <summary>
     /// Lua main class.
     /// </summary>
@@ -241,6 +264,31 @@
             // reset stack
             this.Stack.PopAndForgetEntries(this.Stack.Count);
 
+            //define error handler used in pcall
+            NativeMethods.Lua_pushcclosure(this.LuaState, delegate(IntPtr l)
+            {
+                //push global debug table to stack
+                NativeMethods.Lua_getglobal(this.LuaState, "debug");
+
+                //push debug.traceback function reference to stack
+                NativeMethods.Lua_getfield(this.LuaState, -1, "traceback"); //reference to debug.traceback is on top of stack
+
+                /* No longer need the reference to the debug table (currently at -2), so we can overwrite it with the traceback reference.
+                 * Move traceback function reference back one place in the stack.
+                 * Note, first index is popped so traceback function reference is at top of stack (-1) after this call */
+                NativeMethods.Lua_replace(this.LuaState, -2);
+
+                NativeMethods.Lua_pcall(this.LuaState, 0, NativeMethods.LuaMultret, 0); //pop and call debug.traceback
+
+                var stackTrace = (LuaString)this.Stack.Pop(); //the error returned from debug.traceback call
+
+                var errorMessage = (LuaString)this.Stack.Pop(); //error message returned from pcall
+
+                LuaErrorMessageParseResult parseResult = ParseLuaErrorMessage(errorMessage.Value);
+
+                throw new LuaRuntimeErrorException(parseResult.ChunkName, parseResult.Line, parseResult.Message, stackTrace.Value);
+            }, 0);
+
             var oldStackCount = this.Stack.Count;
 
             var loadRet = NativeMethods.LuaL_loadbuffer(this.LuaState, code, (IntPtr)code.Length, chunkName);
@@ -253,7 +301,9 @@
                 // error value is a string
                 var topAsString = (LuaString)this.Stack.Pop();
 
-                throw ParseErrorMessageForSourceCodeLineAndCreateException(topAsString.Value, false);
+                LuaErrorMessageParseResult parseResult = ParseLuaErrorMessage(topAsString.Value);
+
+                throw new LuaSyntaxErrorException(parseResult.ChunkName, parseResult.Line, parseResult.Message);
             }
 
             Debug.Assert(this.Stack.Count == oldStackCount + 1, "stack count");
@@ -266,20 +316,9 @@
                 this.LuaState, 
                 0, // no input args
                 NativeMethods.LuaMultret, // push all return values onto the stack
-                0); // no error function
+                -2); // our error handler
 
-            if (callRet > 0)
-            {
-                // error occured ... error message on stack
-                Debug.Assert(this.Stack.Count == oldStackCount + 1, "stack count");
-
-                // error value is a string
-                var topAsString = (LuaString)this.Stack.Pop();
-
-                throw ParseErrorMessageForSourceCodeLineAndCreateException(topAsString.Value, true);
-            }
-
-            // no error ... fetch return values
+            //fetch return values
             var ret = new List<LuaType>();
 
             for (int i = this.Stack.Count; i > stackCountBeforeReturnValues; i--)
@@ -368,31 +407,22 @@
 
         #endregion
 
-        private static LuaException ParseErrorMessageForSourceCodeLineAndCreateException(string errorMessage, bool runtimeException)
+        private static LuaErrorMessageParseResult ParseLuaErrorMessage(string errorMessage)
         {
             var regex = new Regex("\\[string \"(.*)\"\\]:(\\d+):\\s(.*)");
             var match = regex.Match(errorMessage);
 
             if (!match.Success)
             {
-                if (runtimeException)
-                {
-                    return new LuaRuntimeErrorException(errorMessage);
-                }
-
-                return new LuaSyntaxErrorException(errorMessage);
+                return new LuaErrorMessageParseResult(errorMessage);
             }
             else
             {
                 string chunkName = match.Groups[1].Value;
-                var line = int.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture);
+                int line = int.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture);
+                string error = match.Groups[3].Value;
 
-                if (runtimeException)
-                {
-                    return new LuaRuntimeErrorException(chunkName, line, match.Groups[3].Value);
-                }
-
-                return new LuaSyntaxErrorException(chunkName, line, match.Groups[3].Value);
+                return new LuaErrorMessageParseResult(chunkName, line, error);
             }
         }
 

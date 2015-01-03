@@ -201,6 +201,9 @@
             Lua_getfield(luaState, LuaGlobalsindex, name);
         }
 
+        [DllImport(LuaDllName, EntryPoint = "lua_replace", CallingConvention = DllCallingConv)]
+        internal static extern int Lua_replace(IntPtr luaState, int index);
+
         [DllImport(LuaDllName, EntryPoint = "lua_gettop", CallingConvention = DllCallingConv)]
         internal static extern int Lua_gettop(IntPtr luaState);
 
