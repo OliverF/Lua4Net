@@ -291,7 +291,7 @@
 
             var oldStackCount = this.Stack.Count;
 
-            var loadRet = NativeMethods.LuaL_loadbuffer(this.LuaState, code, (IntPtr)code.Length, chunkName);
+            var loadRet = NativeMethods.LuaL_loadbuffer(this.LuaState, code, (IntPtr)code.Length, "@" + chunkName);
 
             if (loadRet > 0)
             {
@@ -409,7 +409,7 @@
 
         private static LuaErrorMessageParseResult ParseLuaErrorMessage(string errorMessage)
         {
-            var regex = new Regex("\\[string \"(.*)\"\\]:(\\d+):\\s(.*)");
+            var regex = new Regex("(.*):(\\d+):\\s(.*)");
             var match = regex.Match(errorMessage);
 
             if (!match.Success)
